@@ -12,7 +12,7 @@ class SearchFiltration:
         # self.driver.refresh()
         availability = self.driver.find_element(
             by=By.XPATH,
-            value='//*[@id="Odp5De"]/div/div/div/div[1]/div[2]/div/div/div[4]'
+            value='//*[.="Hours"]'
         )
         availability.click()
         open_places_only = self.driver.find_element(

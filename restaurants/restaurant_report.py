@@ -16,14 +16,19 @@ class RestaurantReport:
         collection = []
         for restaurant_box in self.restaurant_boxes:
             restaurant_name = restaurant_box.find_element(
-                by=By.CLASS_NAME, value='dbg0pd.OSrXXb.eDIkBe'
+                by=By.CLASS_NAME, value='dbg0pd.eDIkBe'
+            ).find_element(by=By.CLASS_NAME, value='OSrXXb'
             ).get_attribute('innerHTML').strip()
+            print(restaurant_name)
             #restaurant_name = restaurant_name[6:-7]
-            restaurant_name = restaurant_name[restaurant_name.find(">") + 1: restaurant_name.find("</")]
+            #restaurant_name = restaurant_name[restaurant_name.find(">") + 1: restaurant_name.find("</")]
             restaurant_name = restaurant_name.replace("&amp;", "&")
-            restaurant_score = restaurant_box.find_element(
-                by=By.CLASS_NAME, value='YDIN4c'
-            ).get_attribute('innerHTML').strip()
+            try :
+                restaurant_score = restaurant_box.find_element(
+                    by=By.CLASS_NAME, value='YDIN4c'
+                ).get_attribute('innerHTML').strip()
+            except:
+                restaurant_score = 'N/A'
 
             #print(restaurant_name)
             #print(restaurant_score)
